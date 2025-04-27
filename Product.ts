@@ -17,11 +17,14 @@ export abstract class Product {
             this.productName = productName
         }
 
-        if (price > 0 && price < 1000) {
+        if (price >= 0.0 && price <= 1000) {
             this.price = price;
         } else {
             console.log("Price must fall in between $0-$1000")
+            this.price = 0.0
         }
+
+        this.reviewRate = this.getReviewRate();
     }
 
     // gets the product id
