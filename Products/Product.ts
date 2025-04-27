@@ -76,10 +76,10 @@ export abstract class Product {
 
     // displays information about the product
     displayProdInfo(): void {
-        console.log("Product ID: ", this.productID);
-        console.log("Product Name: ", this.productName);
-        console.log("Price: ", this.price.toFixed(2));
-        console.log("Review Rate: ", this.reviewRate);
+        console.log("Product ID:", this.productID);
+        console.log("Product Name:", this.productName);
+        console.log(`Price: $${this.price.toFixed(2)}`);
+        console.log("Review Rate:", this.reviewRate);
 
         this.displayContentsInfo();
     }

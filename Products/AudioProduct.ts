@@ -2,8 +2,8 @@ import { NameType } from "../NameType";
 import { Product } from "./Product";
 
 enum GenreType {
-    blues, classical, country, folk, jazz, 
-    metal, pop, rnb, rock, hiphop
+    Blues, Classical, Country, Folk, Jazz, 
+    Metal, Pop, RnB, Rock, HipHop, Alternative
 }
 
 class AudioProduct extends Product {
@@ -13,7 +13,7 @@ class AudioProduct extends Product {
     constructor(productName: string, price: number, singer: NameType) {
         super(productName, price);
         this.singer = singer;
-        this.genre = GenreType.pop; // default value
+        this.genre = this.getGenre();
     }
 
     getSinger(): NameType {
@@ -24,8 +24,8 @@ class AudioProduct extends Product {
         return this.genre;
     }
 
-    setSinger(singer: NameType): void {
-        this.singer = singer;
+    setSinger(name: NameType): void {
+        this.singer = name;
     }
 
     setGenre(genre: GenreType): void {
@@ -38,14 +38,14 @@ class AudioProduct extends Product {
     }
 
     displayContentsInfo(): void {
-        console.log("Singer Name: ", this.singer.firstName, this.singer.lastName);
-        console.log("Genre: ", GenreType[this.genre]);
+        console.log("Singer Name:", this.singer.firstName, this.singer.lastName);
+        console.log("Genre:", GenreType[this.genre]);
     }
 }
 
 const singer: NameType = { firstName: "Bryson", lastName: "Tiller" };
 const song = new AudioProduct("Outta Time", 49.99, singer);
-song.setGenre(GenreType.rnb);
+song.setGenre(GenreType.RnB);
 song.setReviewRate(8.7);
 
 song.displayProdInfo();
