@@ -69,7 +69,9 @@ export abstract class Product {
 
     // abstract (virtual) functions
     // gets the product type in a string type
-    abstract getProdTypeStr(): string;
+    getProdTypeStr(): string {
+        return "0"
+    }
     
     // displays product derived type-specific information
     abstract displayContentsInfo(): void;
