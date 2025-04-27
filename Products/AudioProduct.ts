@@ -1,10 +1,5 @@
-import { NameType } from "../NameType";
+import { NameType, GenreType } from "../Types";
 import { Product } from "./Product";
-
-enum GenreType {
-    Blues, Classical, Country, Folk, Jazz, 
-    Metal, Pop, RnB, Rock, HipHop, Alternative
-}
 
 class AudioProduct extends Product {
     private singer: NameType;

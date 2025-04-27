@@ -1,9 +1,5 @@
-import { NameType } from "../NameType";
+import { NameType, FilmRateType } from "../Types";
 import { Product } from "./Product";
-
-enum FilmRateType {
-    NotRated, G, PG, PG_13, R, NC_17
-}
 
 class VideoProduct extends Product {
     private directorName: NameType;

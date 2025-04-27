@@ -1,4 +1,4 @@
-type prod_id_t = number;
+import { prod_id_t } from "../Types";
 
 export abstract class Product {
     productID: prod_id_t;

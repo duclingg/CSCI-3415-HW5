@@ -1,4 +1,4 @@
-import { NameType } from "../NameType";
+import { NameType } from "../Types";
 import { Product } from "./Product";
 
 abstract class BookProduct extends Product {
