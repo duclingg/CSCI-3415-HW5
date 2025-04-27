@@ -21,7 +21,7 @@ export abstract class Product {
             this.price = price;
         } else {
             console.log("Price must fall in between $0-$1000")
-            this.price = 0.0
+            this.price = 0.0;
         }
 
         this.reviewRate = this.getReviewRate();
@@ -79,6 +79,7 @@ export abstract class Product {
         console.log("Product ID: ", this.productID);
         console.log("Product Name: ", this.productName);
         console.log("Price: ", this.price.toFixed(2));
+        console.log("Review Rate: ", this.reviewRate);
 
         this.displayContentsInfo();
     }

@@ -1,4 +1,4 @@
-interface NameType {
+export interface NameType {
     firstName: string;
     lastName: string;
 }
