@@ -38,7 +38,7 @@ book2.setReviewRate(8.2);
 
 
 
-cart.removeItem(song1.productID);
+// cart.removeItem(song1.productID);
 
 // cart.addItem(song1);
 // cart.addItem(song2);
@@ -48,6 +48,7 @@ cart.removeItem(song1.productID);
 // cart.addItem(movie2);
 // cart.addItem(book1);
 // cart.addItem(book2);
+cart.add(song1).add(song2).add(song3).add(song4).add(movie1).add(movie2).add(book1);
 
 cart.displayCart();
 console.log(cart.getItemNum());

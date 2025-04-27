@@ -75,6 +75,11 @@ export class Cart {
         }
     }
 
+    public add(product: Product.Product): Cart {
+        this.addItem(product);
+        return this
+    }
+
     // checks if the cart has reached the MAX_ITEMS count
     private isCartFull(): boolean {
         if (this.itemNum === this.MAX_ITEMS) {
