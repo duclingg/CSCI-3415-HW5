@@ -1,7 +1,7 @@
 import { NameType, GenreType } from "../Types";
 import { Product } from "./Product";
 
-class AudioProduct extends Product {
+export class AudioProduct extends Product {
     private singer: NameType;
     private genre: GenreType;
 
@@ -37,10 +37,3 @@ class AudioProduct extends Product {
         console.log("Genre:", GenreType[this.genre]);
     }
 }
-
-const singer: NameType = { firstName: "Bryson", lastName: "Tiller" };
-const song = new AudioProduct("Outta Time", 49.99, singer);
-song.setGenre(GenreType.RnB);
-song.setReviewRate(8.7);
-
-song.displayProdInfo();

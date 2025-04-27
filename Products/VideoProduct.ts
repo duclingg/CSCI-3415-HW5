@@ -1,7 +1,7 @@
 import { NameType, FilmRateType } from "../Types";
 import { Product } from "./Product";
 
-class VideoProduct extends Product {
+export class VideoProduct extends Product {
     private directorName: NameType;
     private filmRate: FilmRateType;
     private releaseYear: number;
@@ -66,10 +66,3 @@ class VideoProduct extends Product {
         console.log(`Run Time: ${this.runTime} hours`);
     }
 }
-
-const director: NameType = { firstName: "Michael", lastName: "Bay" };
-const movie = new VideoProduct("Transformers", 14.99, director, 2011, 1.5);
-movie.setReviewRate(7.5);
-movie.setFilmRate(FilmRateType.PG_13);
-
-movie.displayProdInfo();

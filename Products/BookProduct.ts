@@ -33,7 +33,7 @@ abstract class BookProduct extends Product {
     }
 }
 
-class EBookProduct extends BookProduct {
+export class EBookProduct extends BookProduct {
     constructor(productName: string, price: number, author: NameType, pages: number) {
         super(productName, price, author, pages);
     }
@@ -43,7 +43,7 @@ class EBookProduct extends BookProduct {
     }
 }
 
-class PaperBookProduct extends BookProduct {
+export class PaperBookProduct extends BookProduct {
     constructor(productName: string, price: number, author: NameType, pages: number) {
         super(productName, price, author, pages);
     }
@@ -52,9 +52,3 @@ class PaperBookProduct extends BookProduct {
         return "Paper book";
     }
 }
-
-const author: NameType = { firstName: "George", lastName: "Orwell" };
-const ebook = new EBookProduct("1984", 19.99, author, 200);
-ebook.setReviewRate(9.8);
-
-ebook.displayProdInfo();
