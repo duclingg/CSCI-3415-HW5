@@ -1,5 +1,6 @@
 import * as Type from "./Types";
 import * as Product from "./Products"
+import { CartOverFlowException, CartUnderFlowException } from "./Exception";
 
 export class Cart {
     private MAX_ITEMS: number = 7;
@@ -49,7 +50,7 @@ export class Cart {
             this.itemNum++;
             return true;
         } else {
-            return false;
+            throw new CartOverFlowException(product.productName, product.productID);
         }
     }
 
@@ -62,7 +63,7 @@ export class Cart {
                 return true;
             }
         }
-        console.log("There are no items in the cart!");
+        throw new CartUnderFlowException();
         return false;
     }
 

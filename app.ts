@@ -35,7 +35,19 @@ book1.setReviewRate(7.9);
 const book2 = new Product.EBookProduct("Sapiens: A Brief History of Mankind", 23.99, { firstName: "Yuval Noah", lastName: "Harari" }, 200);
 book2.setReviewRate(8.2);
 
+
+
+
 cart.removeItem(song1.productID);
+
+// cart.addItem(song1);
+// cart.addItem(song2);
+// cart.addItem(song3);
+// cart.addItem(song4);
+// cart.addItem(movie1);
+// cart.addItem(movie2);
+// cart.addItem(book1);
+// cart.addItem(book2);
 
 cart.displayCart();
 console.log(cart.getItemNum());
