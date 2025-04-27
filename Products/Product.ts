@@ -76,7 +76,7 @@ export abstract class Product {
     // displays product derived type-specific information
     abstract displayContentsInfo(): void;
 
-    // displays information about the product
+    // displays information about the product - default information for product
     displayProdInfo(): void {
         console.log("Product ID:", this.productID);
         console.log("Product Name:", this.productName);

@@ -11,22 +11,28 @@ abstract class BookProduct extends Product {
         this.pages = pages;
     }
 
+    // get the name of the author
     getAuthor(): NameType {
         return this.author;
     }
 
+    // get number of pages in the book
     getPages(): number {
         return this.pages;
     }
 
+    // set the name of the author
     setAuthor(name: NameType): void {
         this.author = name;
     }
 
+    // set number of pages in book
     setPages(pages: number): void {
         this.pages = pages;
     }
 
+    // virtual functions
+    // display additional abstraction product information
     displayContentsInfo(): void {
         console.log("Author:", this.author.firstName, this.author.lastName);
         console.log("Pages:", this.pages);
@@ -38,6 +44,8 @@ export class EBookProduct extends BookProduct {
         super(productName, price, author, pages);
     }
 
+    // virtual functions
+    // get the product type in string form
     getProdTypeStr(): string {
         return "E book";
     }
@@ -48,6 +56,8 @@ export class PaperBookProduct extends BookProduct {
         super(productName, price, author, pages);
     }
 
+    // virtual functions
+    // get the product type in string form
     getProdTypeStr(): string {
         return "Paper book";
     }
