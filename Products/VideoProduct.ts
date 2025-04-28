@@ -1,4 +1,4 @@
-import { NameType, FilmRateType } from "../Types";
+import { NameType, FilmRateType } from "../App/Types";
 import { Product } from "./Product";
 
 export class VideoProduct extends Product {
@@ -76,5 +76,9 @@ export class VideoProduct extends Product {
         console.log("Film Rating:", FilmRateType[this.filmRate]);
         console.log("Release Year:", this.releaseYear);
         console.log(`Run Time: ${this.runTime} hours`);
+    }
+
+    toFileString(): string {
+        return `${this.productName}, ${this.price}, ${this.directorName}, ${this.releaseYear}, ${this.runTime}, ${this.filmRate}, ${this.reviewRate}`;
     }
 }

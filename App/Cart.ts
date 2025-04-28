@@ -1,6 +1,7 @@
+import { writeFileSync } from "fs";
 import * as Type from "./Types";
-import * as Product from "./Products"
-import { CartOverFlowException, CartUnderFlowException } from "./Exception";
+import * as Product from "../Products"
+import { CartOverFlowException, CartUnderFlowException, CartSaveException } from "./Exception";
 
 export class Cart {
     private MAX_ITEMS: number = 7;
@@ -42,6 +43,12 @@ export class Cart {
     setPurchasedItems(items: Product.Product[]) {
         this.purchasedItems = items;
     }
+
+    // overload cart
+    public add(product: Product.Product): Cart {
+        this.addItem(product);
+        return this;
+    }
     
     // add an item
     public addItem(product: Product.Product): boolean {
@@ -64,20 +71,39 @@ export class Cart {
             }
         }
         throw new CartUnderFlowException();
-        return false;
     }
 
     // display the items in the cart with product information
     public displayCart(): void {
         for (const product of this.purchasedItems) {
             console.log(`\n[${product.getProdTypeStr()}]`);
-            product.displayProdInfo()
+            product.displayProdInfo();
         }
     }
 
-    public add(product: Product.Product): Cart {
-        this.addItem(product);
-        return this
+    // save cart contents to file
+    public saveCart(cart: Cart, file: string): boolean {
+        try {
+            const lines: string[] = [];
+
+            for (const product of cart.purchasedItems) {
+                const typeStr = product.getProdTypeStr();
+                const info = product.toFileString();
+
+                lines.push(`${typeStr}, ${info}`);
+            }
+
+            const fileContent = lines.join('\n');
+
+            writeFileSync(file, fileContent);
+            return true;
+        } catch {
+            throw new CartSaveException();
+        }
+    }
+
+    public readFromFile(file: string): boolean {
+        return false;
     }
 
     // checks if the cart has reached the MAX_ITEMS count

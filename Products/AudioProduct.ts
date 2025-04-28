@@ -1,4 +1,4 @@
-import { NameType, GenreType } from "../Types";
+import { NameType, GenreType } from "../App/Types";
 import { Product } from "./Product";
 
 export class AudioProduct extends Product {
@@ -41,5 +41,9 @@ export class AudioProduct extends Product {
     displayContentsInfo(): void {
         console.log("Singer Name:", this.singer.firstName, this.singer.lastName);
         console.log("Genre:", GenreType[this.genre]);
+    }
+
+    toFileString(): string {
+        return `${this.productName}, ${this.price}, ${this.singer}, ${this.genre}, ${this.reviewRate}`;
     }
 }

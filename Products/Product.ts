@@ -1,4 +1,4 @@
-import { prod_id_t } from "../Types";
+import { prod_id_t } from "../App/Types";
 
 export abstract class Product {
     productID: prod_id_t;
@@ -86,6 +86,10 @@ export abstract class Product {
         this.displayContentsInfo();
     }
 
+    // converts product info to string for file
+    abstract toFileString(): string;
+
+    // static function
     // creates a Product-wise next product id
     private static createNewID(): prod_id_t {
         if (!Product.nextID) {

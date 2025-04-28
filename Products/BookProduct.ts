@@ -1,4 +1,4 @@
-import { NameType } from "../Types";
+import { NameType } from "../App/Types";
 import { Product } from "./Product";
 
 abstract class BookProduct extends Product {
@@ -36,6 +36,10 @@ abstract class BookProduct extends Product {
     displayContentsInfo(): void {
         console.log("Author:", this.author.firstName, this.author.lastName);
         console.log("Pages:", this.pages);
+    }
+
+    toFileString(): string {
+        return `${this.productName}, ${this.price}, ${this.getAuthor()}, ${this.reviewRate}`;
     }
 }
 
