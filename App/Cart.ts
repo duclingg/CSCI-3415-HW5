@@ -90,7 +90,7 @@ export class Cart {
                 const typeStr = product.getProdTypeStr();
                 const info = product.toFileString();
 
-                lines.push(`${typeStr}, ${info}`);
+                lines.push(`${typeStr}, ${product.productName}, ${product.price}, ${info}, ${product.reviewRate}`);
             }
 
             const fileContent = lines.join('\n');

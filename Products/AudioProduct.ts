@@ -43,7 +43,8 @@ export class AudioProduct extends Product {
         console.log("Genre:", GenreType[this.genre]);
     }
 
+    // string representation for file output
     toFileString(): string {
-        return `${this.productName}, ${this.price}, ${this.singer}, ${this.genre}, ${this.reviewRate}`;
+        return `${this.singer.firstName} ${this.singer.lastName}, ${GenreType[this.genre]}`;
     }
 }

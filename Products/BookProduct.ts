@@ -38,8 +38,9 @@ abstract class BookProduct extends Product {
         console.log("Pages:", this.pages);
     }
 
+    // string resprentation for file output
     toFileString(): string {
-        return `${this.productName}, ${this.price}, ${this.getAuthor()}, ${this.reviewRate}`;
+        return `${this.author.firstName} ${this.author.lastName}`;
     }
 }
 

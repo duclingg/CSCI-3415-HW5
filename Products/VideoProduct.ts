@@ -75,10 +75,11 @@ export class VideoProduct extends Product {
         console.log("Director:", this.directorName.firstName, this.directorName.lastName);
         console.log("Film Rating:", FilmRateType[this.filmRate]);
         console.log("Release Year:", this.releaseYear);
-        console.log(`Run Time: ${this.runTime} hours`);
+        console.log(`Run Time: ${this.runTime} minutes`);
     }
 
+    // string representation for file output
     toFileString(): string {
-        return `${this.productName}, ${this.price}, ${this.directorName}, ${this.releaseYear}, ${this.runTime}, ${this.filmRate}, ${this.reviewRate}`;
+        return `${this.directorName.firstName} ${this.directorName.lastName}, ${this.releaseYear}, ${this.runTime}, ${this.filmRate}`;
     }
 }
