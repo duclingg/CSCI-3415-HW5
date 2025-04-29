@@ -12,6 +12,12 @@ export class CartUnderFlowException extends Error {
     }
 }
 
+export class CartSearchException extends Error {
+    constructor(productName: string) {
+        super(`Could not find product '${productName}' in the cart.`)
+    }
+}
+
 export class CartSaveException extends Error {
     constructor() {
         super("Failed to save cart.");

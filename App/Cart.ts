@@ -1,7 +1,7 @@
-import { writeFileSync } from "fs";
+import { writeFileSync, readFileSync } from "fs";
 import * as Type from "./Types";
 import * as Product from "../Products"
-import { CartOverFlowException, CartUnderFlowException, CartSaveException } from "./Exception";
+import { CartOverFlowException, CartUnderFlowException, CartSaveException, CartSearchException } from "./Exception";
 
 export class Cart {
     private MAX_ITEMS: number = 7;
@@ -81,6 +81,17 @@ export class Cart {
         }
     }
 
+    // search for product by name
+    public searchProduct(productName: string): Product.Product {
+        for (const product of this.purchasedItems) {
+            if (product.productName === productName) {
+                product.displayProdInfo();
+                return product
+            }
+        }
+        throw new CartSearchException(productName);
+    }
+
     // save cart contents to file
     public saveCart(cart: Cart, file: string): boolean {
         try {
@@ -103,7 +114,7 @@ export class Cart {
     }
 
     public readFromFile(file: string): boolean {
-        return false;
+        return false
     }
 
     // checks if the cart has reached the MAX_ITEMS count
