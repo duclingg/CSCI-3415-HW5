@@ -23,3 +23,9 @@ export class CartSaveException extends Error {
         super("Failed to save cart.");
     }
 }
+
+export class CartImportException extends Error {
+    constructor(file: string) {
+        super(`Failed to import cart form the file ${file}.`)
+    }
+}

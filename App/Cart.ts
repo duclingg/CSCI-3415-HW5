@@ -1,10 +1,10 @@
 import { writeFileSync, readFileSync } from "fs";
 import * as Type from "./Types";
 import * as Product from "../Products"
-import { CartOverFlowException, CartUnderFlowException, CartSaveException, CartSearchException } from "./Exception";
+import * as Exception from "./Exception";
 
 export class Cart {
-    private MAX_ITEMS: number = 7;
+    private max_items: number = 7;
     private itemNum: number = 0;
     private owner: Type.NameType;
     private purchasedItems: Product.Product[] = [];
@@ -52,12 +52,14 @@ export class Cart {
     
     // add an item
     public addItem(product: Product.Product): boolean {
-        if (!this.isCartFull()) {
-            this.purchasedItems.push(product);
-            this.itemNum++;
+        try {
+            if (!this.isCartFull()) {
+                this.purchasedItems.push(product);
+                this.itemNum++;
+            }
             return true;
-        } else {
-            throw new CartOverFlowException(product.productName, product.productID);
+        } catch {
+            throw new Exception.CartOverFlowException(product.productName, product.productID);
         }
     }
 
@@ -70,7 +72,7 @@ export class Cart {
                 return true;
             }
         }
-        throw new CartUnderFlowException();
+        throw new Exception.CartUnderFlowException();
     }
 
     // display the items in the cart with product information
@@ -86,10 +88,10 @@ export class Cart {
         for (const product of this.purchasedItems) {
             if (product.productName === productName) {
                 product.displayProdInfo();
-                return product
+                return product;
             }
         }
-        throw new CartSearchException(productName);
+        throw new Exception.CartSearchException(productName);
     }
 
     // save cart contents to file
@@ -109,17 +111,64 @@ export class Cart {
             writeFileSync(file, fileContent);
             return true;
         } catch {
-            throw new CartSaveException();
+            throw new Exception.CartSaveException();
         }
     }
 
+    // read product list from file and add to cart
     public readFromFile(file: string): boolean {
-        return false
+        try {
+            const products: Product.Product[] = [];
+            
+            const lines = readFileSync(file, 'utf-8')
+                .split("\n",)
+                .map(line => line.trim());
+
+            for (const line of lines) {
+                const parts = line.split(", ");
+
+                const typeStr = parts[0]
+                const data = parts.slice(1);
+                const name = data[2].split(" ");
+                
+                switch (typeStr) {
+                    case "Music":
+                        var audioProduct = new Product.AudioProduct(
+                            data[0],
+                            parseFloat(data[1]),
+                            { firstName: name[0], lastName: name[1] }
+                        )
+                        audioProduct.setGenre(Type.GenreType[data[3].trim() as keyof typeof Type.GenreType]);
+                        audioProduct.setReviewRate(parseFloat(data[4]));
+                        
+                        products.push(audioProduct);
+                        break;
+                    case "Movie":
+                        var videoProduct = new Product.VideoProduct(
+                            data[0],
+                            parseFloat(data[1]),
+                            { firstName: name[0], lastName: name[1] },
+                            parseInt(data[3]),
+                            parseInt(data[4])
+                        )
+                        videoProduct.setFilmRate(Type.FilmRateType[data[5].trim() as keyof typeof Type.FilmRateType]);
+                        videoProduct.setReviewRate(parseFloat(data[6]));
+
+                        products.push(videoProduct);
+                        break;
+                    }
+            }
+
+            this.purchasedItems = products;
+            return true;
+        } catch {
+            throw new Exception.CartImportException(file);
+        }
     }
 
-    // checks if the cart has reached the MAX_ITEMS count
+    // checks if the cart has reached the max_items count
     private isCartFull(): boolean {
-        if (this.itemNum === this.MAX_ITEMS) {
+        if (this.itemNum === this.max_items) {
             return true;
         } else {
             return false;
