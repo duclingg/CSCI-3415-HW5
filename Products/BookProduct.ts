@@ -40,7 +40,7 @@ abstract class BookProduct extends Product {
 
     // string resprentation for file output
     toFileString(): string {
-        return `${this.author.firstName} ${this.author.lastName}`;
+        return `${this.author.firstName} ${this.author.lastName}, ${this.pages}`;
     }
 }
 

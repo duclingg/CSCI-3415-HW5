@@ -156,6 +156,30 @@ export class Cart {
 
                         products.push(videoProduct);
                         break;
+
+                    case "E book":
+                        var eBookProduct = new Product.EBookProduct(
+                            data[0],
+                            parseFloat(data[1]),
+                            { firstName: name[0], lastName: name[1] },
+                            parseInt(data[3])
+                        )
+                        eBookProduct.setReviewRate(parseFloat(data[4]));
+
+                        products.push(eBookProduct);
+                        break;
+
+                    case "Paper book":
+                        var paperBookProduct = new Product.PaperBookProduct(
+                            data[0],
+                            parseFloat(data[1]),
+                            { firstName: name[0], lastName: name[1] },
+                            parseInt(data[3])
+                        )
+                        paperBookProduct.setReviewRate(parseFloat(data[4]));
+
+                        products.push(paperBookProduct);
+                        break;
                     }
             }
 
