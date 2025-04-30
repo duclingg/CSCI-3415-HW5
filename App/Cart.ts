@@ -14,6 +14,7 @@ export class Cart {
         this.purchasedItems = this.getPurchasedItems();
     }
 
+    // getters
     // get number of items in the cart
     getItemNum(): number {
         return this.itemNum
@@ -29,6 +30,7 @@ export class Cart {
         return this.purchasedItems;
     }
 
+    // setters
     // set the number of items in the cart
     setItemNum() {
         this.itemNum = this.purchasedItems.length;
@@ -44,6 +46,7 @@ export class Cart {
         this.purchasedItems = items;
     }
 
+    // public methods
     // overload cart
     public add(product: Product.Product): Cart {
         this.addItem(product);
@@ -184,13 +187,13 @@ export class Cart {
     public searchProduct(productName: string): Product.Product {
         for (const product of this.purchasedItems) {
             if (product.productName === productName) {
-                product.displayProdInfo();
                 return product;
             }
         }
         throw new Exception.CartSearchException(productName);
     }
 
+    // private methods
     // checks if the cart has reached the max_items count
     private isCartFull(): boolean {
         if (this.itemNum === this.max_items) {

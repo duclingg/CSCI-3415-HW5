@@ -5,6 +5,7 @@ export abstract class Product {
     productName: string;
     price: number;
     reviewRate: number;
+    sentPoint: number;
 
     static nextID: prod_id_t;
 
@@ -14,19 +15,21 @@ export abstract class Product {
         if (productName === "") {
             this.productName = "!No Name Product!";
         } else {
-            this.productName = productName
+            this.productName = productName;
         }
 
         if (price >= 0.0 && price <= 1000) {
             this.price = price;
         } else {
-            console.log("Price must fall in between $0-$1000")
+            console.log("Price must fall in between $0-$1000");
             this.price = 0.0;
         }
 
         this.reviewRate = this.getReviewRate();
+        this.sentPoint = this.getSentPoint();
     }
 
+    // getters
     // gets the product id
     getProdID(): prod_id_t {
         return this.productID;
@@ -47,6 +50,12 @@ export abstract class Product {
         return this.reviewRate;
     }
 
+    // get sent point of product
+    getSentPoint(): number {
+        return this.sentPoint;
+    }
+
+    // setters
     // set the product id
     setProdID(id: prod_id_t): void {
         this.productID = id;
@@ -65,6 +74,11 @@ export abstract class Product {
     // set product review rate
     setReviewRate(rate: number) {
         this.reviewRate = rate;
+    }
+
+    // set sent point of product
+    setSentPoint(point: number) {
+        this.sentPoint = point;
     }
 
     // abstract (virtual) functions
@@ -89,7 +103,7 @@ export abstract class Product {
     // converts product info to string for file
     abstract toFileString(): string;
 
-    // static function
+    // static method
     // creates a Product-wise next product id
     private static createNewID(): prod_id_t {
         if (!Product.nextID) {
