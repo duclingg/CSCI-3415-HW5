@@ -83,17 +83,6 @@ export class Cart {
         }
     }
 
-    // search for product by name
-    public searchProduct(productName: string): Product.Product {
-        for (const product of this.purchasedItems) {
-            if (product.productName === productName) {
-                product.displayProdInfo();
-                return product;
-            }
-        }
-        throw new Exception.CartSearchException(productName);
-    }
-
     // save cart contents to file
     public saveCart(cart: Cart, file: string): boolean {
         try {
@@ -121,8 +110,7 @@ export class Cart {
             const products: Product.Product[] = [];
             
             const lines = readFileSync(file, 'utf-8')
-                .split("\n",)
-                .map(line => line.trim());
+                .split("\n",);
 
             for (const line of lines) {
                 const parts = line.split(", ");
@@ -143,6 +131,7 @@ export class Cart {
                         
                         products.push(audioProduct);
                         break;
+
                     case "Movie":
                         var videoProduct = new Product.VideoProduct(
                             data[0],
@@ -184,10 +173,22 @@ export class Cart {
             }
 
             this.purchasedItems = products;
+            this.setItemNum();
             return true;
         } catch {
             throw new Exception.CartImportException(file);
         }
+    }
+
+    // search for product by name
+    public searchProduct(productName: string): Product.Product {
+        for (const product of this.purchasedItems) {
+            if (product.productName === productName) {
+                product.displayProdInfo();
+                return product;
+            }
+        }
+        throw new Exception.CartSearchException(productName);
     }
 
     // checks if the cart has reached the max_items count
