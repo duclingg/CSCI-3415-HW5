@@ -2,6 +2,21 @@
 Justin Hoang  
 CSCI 3415  
 
+## How to Run
+In order to run a TypeScript file, you must install `Node.js`.  
+
+In the command line, run the command:  
+`npm install -g typescript ts-node`  
+Now, you can run the main (`app.ts`) file:  
+`ts-node app.js`  
+
+All required packages and configs should be included in the `tsconfig.json`, `package-lock.json`, and `package.json` files.  
+
+### Note about Extra Credit:
+Operator overloading does not exist in TypeScript, so instead, I implemented function overloading for the add (+) to the cart.  
+
+All other extra credit points should be implemented.  
+
 ## Part 1
 1. Modern programming languages do not include the `goto` unconditional branch command because it is considered harmful. Its main issue is that it creates unreadable code (sphaghetti code). `goto` statements move the execution control to a place in the program specified by the `goto` statement, which can make it hard to trace where code is executed.  
 The articles say that `goto` statements are best used selectively for clean error handling paths, reducing duplication, avoiding unreadble deep nesting, and maintain high performance. The articles do not recommend using `goto`'s for random jumps without careful thought.  
@@ -33,7 +48,7 @@ function(1, 2, 3, name='Alice', age: 30)
 
 5. Coroutines are subprograms that have multiple entires for non-preemptive mulitasking, allowing execution to be suspended and resumed. Coroutines are called quasi-concurrent execution because like concurrency (asynchronous) execution, coroutine executes the subprograms one at a time--the execution is interleaved, but not overlapped. It gives the illusion of concurrent execution, but only one coroutine runs at a time. You can implement coroutines in Python by using the keyowrd `yield`, or using the library `asyncio`.  
 
-6. The four pillars of OOP:
+6. The four pillars of OOP in TypeScript:
 Encapsulation:  
 The bundling of data (attributes) and methods inside a class while restricting direct acess to object data.  
 ```typescript
@@ -120,3 +135,28 @@ animals.forEach(feedAnimal);
 // "Animal is eating" (Dog)
 // "Bird is pecking at food" (Bird)
 ```  
+
+## Report
+### Abstract 
+Provide a brief overview of the programming language you used, including its general characteristics and intended use cases.  
+In this programming assignment, I used TypeScript. It is an iteration of the language JavaScript with new features such as strict type checking. The main use of TypeScript is usually for web development, but also for large-scale applications. 
+
+### Approach
+Since this assignment is mostly OOP based, I took on this project by following the paradigms of OOP. I implemented the program one-by-one according to the table specified in the assignment, creating the classes from top to bottom, following the hierarchy. I was forced to use a runtime environment called Node.js, which allowed me to run the program within the command line, as well as compile the code from TypeScript to JavaScript (since it is in iteration).
+
+### Key Learnings
+TypeScript includes a lot of built in methods such as `.reduce()`, `.map()`, etc. that I was not used to. These methods made it simple to perform specific operations on arrays. Despite the strict type checking, TypeScript still allowed 'undefined' or 'null' values to be passed, which is similar to other languages I've used before such as Swift. While trying to attempt one of the extra credit points, I found out that TypeScript does not include operator overloading.
+
+### Unique or Distinctive Features
+Some features of TypeScript that are not commonly found in other programming languages is the `export` keyword. This keyword allows you to export specific classes, structs, generic types, enums, etc. to be imported into other files. While Python does have a similar feature, where you are forced to import files from one to other in order to use them, it does not require an additional keyword to specify it's ability to be used elsewhere in the program. Methods, such as `.reduce()` were something I've never seen before in other languages.
+
+### Likes and Dislikes
+I liked the strict type-checking in TypeScript, as my experience previously in JavaScript made it difficult to learn with undefined and null values everywhere. While TypeScript still allows those, it can be mitigated more easily. Also, the type-checking made it easier to understand what variable does what, or what function excepts what type of output, something that I am more used to with other languages.  
+
+I did not like closures, I specifically tried to avoid them in my program. They are quite confusing to understand. A small one, but I don't like how `this` is used for calling specific attributes/methods in a class rather than `self`. I did not like how I had to import basic things, such as reading/writing to files. Rather than having a standard library that allows programmers to read/write to files easily, I had to install and import a package in order to do so.
+
+### Any Additional Notes
+I didn't really run into much challenge in this assignment using TypeScript, besides for the extra credit with writing and reading from/to a file. 
+
+### Conclusion
+Overall, I enjoyed programming in this language. Everything mostly made sense, with a lot of similarities to other languages that I have used before. However, with the special methods that I mentioned earlier, I could see that it can begin to get very complex with much larger-scale applications or programs. I like the language itself, but could see myself starting to sway away from it when it comes to web-development (specifically dealing with HTML and CSS in combination).  

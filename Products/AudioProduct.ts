@@ -11,6 +11,7 @@ export class AudioProduct extends Product {
         this.genre = this.getGenre();
     }
 
+    // getters
     // get the name of the singer
     getSinger(): NameType {
         return this.singer;
@@ -21,6 +22,7 @@ export class AudioProduct extends Product {
         return this.genre;
     }
 
+    // setters
     // set the name of the singer
     setSinger(name: NameType): void {
         this.singer = name;

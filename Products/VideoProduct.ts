@@ -15,6 +15,7 @@ export class VideoProduct extends Product {
         this.filmRate = this.getFilmRate();
     }
 
+    // getters
     // get the name of the director
     getDirector(): NameType {
         return this.directorName
@@ -35,6 +36,7 @@ export class VideoProduct extends Product {
         return this.runTime;
     }
 
+    // setters
     // set the name of the director
     setDirector(name: NameType): void {
         this.directorName = name;

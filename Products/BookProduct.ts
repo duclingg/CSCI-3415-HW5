@@ -11,6 +11,7 @@ abstract class BookProduct extends Product {
         this.pages = pages;
     }
 
+    // getters
     // get the name of the author
     getAuthor(): NameType {
         return this.author;
@@ -21,6 +22,7 @@ abstract class BookProduct extends Product {
         return this.pages;
     }
 
+    // setters
     // set the name of the author
     setAuthor(name: NameType): void {
         this.author = name;
