@@ -82,6 +82,6 @@ export class VideoProduct extends Product {
 
     // string representation for file output
     toFileString(): string {
-        return `${this.directorName.firstName} ${this.directorName.lastName}, ${this.releaseYear}, ${this.runTime}, ${this.filmRate}`;
+        return `${this.directorName.firstName} ${this.directorName.lastName}, ${this.releaseYear}, ${this.runTime}, ${FilmRateType[this.filmRate]}`;
     }
 }
